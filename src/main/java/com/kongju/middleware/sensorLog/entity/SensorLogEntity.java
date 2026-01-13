@@ -30,6 +30,9 @@ public class SensorLogEntity {
     @Column(name = "pressure")
     private Double pressure;
 
+    @Column(name = "humidity")
+    private Double humidity;
+
     @Column(name = "vibration")
     private Double vibration;
 
@@ -37,29 +40,30 @@ public class SensorLogEntity {
     private Integer speed;
 
     @Column(name = "timestamp", nullable = false)
-    private LocalDateTime timestamp; // plc가 생성한 시간(timestamp_ms)
+    private LocalDateTime timestamp;
 
     @Column(name = "timestamp_ms", nullable = false)
     private Long timestampMs;
 
     @Column(name = "created_at", updatable = false)
-    private LocalDateTime createdAt; // 서버에 기록된 시간
+    private LocalDateTime createdAt;
 
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
     }
 
-    // 생성 메서드 (팩토리 패턴) : 객체를 직접 new 하지 말고, 정해진 규칙으로 만들어라
+    // MQTT → Entity 변환
     public static SensorLogEntity fromMqtt(SensorData dto) {
-        SensorLogEntity log = new SensorLogEntity();
-        log.equipmentId = dto.getEquipmentId();
-        log.timestamp = dto.getTimestamp();
-        log.timestampMs = dto.getTimestampMs();
-        log.temperature = dto.getTemperature();
-        log.pressure = dto.getPressure();
-        log.vibration = dto.getVibration();
-        log.speed = dto.getSpeed();
-        return log;
+        return SensorLogEntity.builder()
+                .equipmentId(dto.getEquipmentId())
+                .temperature(dto.getTemperature())
+                .pressure(dto.getPressure())
+                .humidity(dto.getHumidity())
+                .vibration(dto.getVibration())
+                .speed(dto.getSpeed())
+                .timestamp(dto.getTimestamp())
+                .timestampMs(dto.getTimestampMs())
+                .build();
     }
 }

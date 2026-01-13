@@ -1,8 +1,9 @@
 CREATE TABLE IF NOT EXISTS sensor_log (
-    id BIGINT AUTO_INCREMENT PRIMARY KEY,
-    equipment_id VARCHAR(50) NOT NULL,
+                                          id BIGINT AUTO_INCREMENT PRIMARY KEY,
+                                          equipment_id VARCHAR(50) NOT NULL,
     temperature DOUBLE,
     pressure DOUBLE,
+    humidity DOUBLE,
     vibration DOUBLE,
     speed INT,
     timestamp TIMESTAMP NOT NULL,
@@ -11,4 +12,4 @@ CREATE TABLE IF NOT EXISTS sensor_log (
     INDEX idx_equipment_id (equipment_id),
     INDEX idx_timestamp (timestamp),
     INDEX idx_created_at (created_at)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;

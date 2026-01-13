@@ -21,6 +21,9 @@ public class SensorData {
     @JsonProperty("pressure")
     private Double pressure;
 
+    @JsonProperty("humidity")
+    private Double humidity;
+
     @JsonProperty("vibration")
     private Double vibration;
 
