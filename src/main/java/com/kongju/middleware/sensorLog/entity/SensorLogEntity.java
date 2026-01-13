@@ -33,6 +33,9 @@ public class SensorLogEntity {
     @Column(name = "vibration")
     private Double vibration;
 
+    @Column(name = "humidity")
+    private Double humidity;
+
     @Column(name = "speed")
     private Integer speed;
 
@@ -59,6 +62,7 @@ public class SensorLogEntity {
         log.temperature = dto.getTemperature();
         log.pressure = dto.getPressure();
         log.vibration = dto.getVibration();
+        log.humidity = dto.getHumidity();
         log.speed = dto.getSpeed();
         return log;
     }

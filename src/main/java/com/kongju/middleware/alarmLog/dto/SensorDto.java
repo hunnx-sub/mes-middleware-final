@@ -24,6 +24,9 @@ public class SensorDto {
     @JsonProperty("vibration")
     private Double vibration;
 
+    @JsonProperty("humidity")
+    private Double humidity;
+
     @JsonProperty("speed")
     private Integer speed;
 
