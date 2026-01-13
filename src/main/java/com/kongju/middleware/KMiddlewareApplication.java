@@ -1,9 +1,5 @@
 package com.kongju.middleware;
 
-import com.kongju.middleware.plcProductionLog.service.PlcProductionLogService;
-import com.kongju.middleware.sensorLog.service.SensorLogService;
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.WebApplicationType;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -19,6 +15,12 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHandler;
 import org.springframework.messaging.MessagingException;
+
+import com.kongju.middleware.plcProductionLog.service.PlcProductionLogService;
+import com.kongju.middleware.sensorLog.service.SensorLogService;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -68,9 +70,14 @@ public class KMiddlewareApplication {
                 System.out.println("handleMessage : TOPIC : " + topic);
                 String payload = message.getPayload().toString();
                 if(topic.contains("factory/sensor/")){
+                    System.out.println("payload : " + payload);
                     sensorLogService.processAndSaveData(payload);
+                    System.out.println("TODO! factroy/sensor/");
                 }else if(topic.contains("factory/plc/")){
-                    // TODO
+                    if (payload.isEmpty()) {
+                        return;
+                    }
+                    System.out.println("payload : " + payload);
                     plcProductionLogService.processAndSaveData(payload);
                     System.out.println("TODO! factroy/plc/");
                 }

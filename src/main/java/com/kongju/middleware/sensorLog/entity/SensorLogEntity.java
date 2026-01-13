@@ -1,13 +1,20 @@
 package com.kongju.middleware.sensorLog.entity;
 
+import java.time.LocalDateTime;
+
 import com.kongju.middleware.sensorLog.dto.SensorData;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "sensor_log")
@@ -32,6 +39,9 @@ public class SensorLogEntity {
 
     @Column(name = "vibration")
     private Double vibration;
+
+    @Column(name = "humidity")
+    private Double humidity;
 
     @Column(name = "speed")
     private Integer speed;
@@ -60,6 +70,7 @@ public class SensorLogEntity {
         log.pressure = dto.getPressure();
         log.vibration = dto.getVibration();
         log.speed = dto.getSpeed();
+        log.humidity = dto.getHumidity();
         return log;
     }
 }

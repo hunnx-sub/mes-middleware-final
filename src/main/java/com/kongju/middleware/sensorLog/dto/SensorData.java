@@ -1,11 +1,12 @@
 package com.kongju.middleware.sensorLog.dto;
 
+import java.time.LocalDateTime;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -23,6 +24,9 @@ public class SensorData {
 
     @JsonProperty("vibration")
     private Double vibration;
+
+    @JsonProperty("humidity")
+    private Double humidity;
 
     @JsonProperty("speed")
     private Integer speed;

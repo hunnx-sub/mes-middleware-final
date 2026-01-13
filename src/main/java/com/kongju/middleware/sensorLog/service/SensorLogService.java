@@ -1,14 +1,16 @@
 package com.kongju.middleware.sensorLog.service;
 
 
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.kongju.middleware.sensorLog.dto.SensorData;
 import com.kongju.middleware.sensorLog.entity.SensorLogEntity;
 import com.kongju.middleware.sensorLog.repository.SensorLogRepository;
+
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -39,10 +41,14 @@ public class SensorLogService {
             SensorLogEntity saved = sensorLogRepository.save(entity);
             log.info("Data saved successfully with ID: {}", saved.getId());
 
+        }catch (com.fasterxml.jackson.core.JsonProcessingException e) {
+            log.error("JSON parse failed. payload={}", jsonMessage, e);
+            return;
         } catch (Exception e) {
-            log.error("Error processing MQTT message: {}", e.getMessage(), e);
-            throw new RuntimeException("Failed to process MQTT message", e);
-        }
+            log.error("Unexpected error. payload={}", jsonMessage, e);
+            return;
+}
+
     }
 
     private void validateData(SensorData dto) {
