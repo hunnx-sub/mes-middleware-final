@@ -1,9 +1,31 @@
+# Spring Integration MQTT 설정 안내 (프로젝트 기준)
 
+본 프로젝트는 Spring Integration MQTT 공식 문서를 참고하여  
+MQTT Inbound Channel Adapter(Java 설정 방식)를 기반으로 구현하였다.
 
-# Spring integration MQTT DOC
-https://docs.spring.io/spring-integration/reference/mqtt.html
-- 메이븐 디펜던시 입력으로 라이브러리 다운로드
-- 자바 설정
-  - 인바운드(메시지 기반) 채널 어댑터 > Java 구성을 사용한 구성
+- 공식 문서  
+  https://docs.spring.io/spring-integration/reference/mqtt.html
 
-https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client
+- MQTT 클라이언트 라이브러리  
+  https://mvnrepository.com/artifact/org.eclipse.paho/org.eclipse.paho.mqttv5.client
+
+---
+
+## Java 버전
+
+- 본 프로젝트는 **Java 17** 환경을 기준으로 개발 및 테스트되었다.
+- Maven 빌드 시 Java 17 사용을 전제로 한다.
+- `pom.xml` 내 `java.version` 또는 `maven-compiler-plugin` 설정이 필요하다.
+
+---
+
+## 데이터베이스(DB) 구성 관련 안내
+
+본 프로젝트의 DB 구성은 master MQTT 예제 코드와 일부 차이가 있다.
+
+- 테이블 구조, 컬럼명, ID 생성 방식은
+  일반적인 샘플 코드와 다를 수 있다.
+- DB 연결 정보 및 환경별 설정은
+  `application.yaml` 파일을 통해 관리한다.
+
+---
