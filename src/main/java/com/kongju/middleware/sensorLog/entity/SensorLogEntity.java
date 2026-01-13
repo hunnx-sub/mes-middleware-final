@@ -45,6 +45,9 @@ public class SensorLogEntity {
     @Column(name = "created_at", updatable = false)
     private LocalDateTime createdAt; // 서버에 기록된 시간
 
+    @Column(name = "humidity")
+    private Double humidity;
+
     @PrePersist
     protected void onCreate() {
         createdAt = LocalDateTime.now();
@@ -60,6 +63,7 @@ public class SensorLogEntity {
         log.pressure = dto.getPressure();
         log.vibration = dto.getVibration();
         log.speed = dto.getSpeed();
+        log.humidity = dto.getHumidity();
         return log;
     }
 }

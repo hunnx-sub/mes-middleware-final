@@ -32,4 +32,7 @@ public class SensorData {
 
     @JsonProperty("timestamp_ms")
     private Long timestampMs;
+
+    @JsonProperty("humidity")
+    private Double humidity;
 }

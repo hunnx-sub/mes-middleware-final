@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS sensor_log (
     timestamp TIMESTAMP NOT NULL,
     timestamp_ms BIGINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    humidity DOUBLE,
     INDEX idx_equipment_id (equipment_id),
     INDEX idx_timestamp (timestamp),
     INDEX idx_created_at (created_at)
