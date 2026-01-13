@@ -25,9 +25,9 @@ public class SensorLogService {
             // JSON 파싱
             SensorData data = objectMapper.readValue(jsonMessage, SensorData.class);
 
-//            log.info("Received data: equipmentId={}, temperature={}, pressure={}, vibration={}, speed={}, timestamp={}, timestampMs={}",
+//            log.info("Received data: equipmentId={}, temperature={}, pressure={}, vibration={}, speed={}, humidity ={}, timestamp={}, timestampMs={}",
 //                    dto.getEquipmentId(), dto.getTemperature(), dto.getPressure(),
-//                    dto.getVibration(), dto.getSpeed(), dto.getTimestamp(), dto.getTimestampMs());
+//                    dto.getVibration(), dto.getSpeed(), dto.getHumidity, dto.getTimestamp(), dto.getTimestampMs());
 
 //            // 데이터 검증 (선택사항)
 //            validateData(dto);

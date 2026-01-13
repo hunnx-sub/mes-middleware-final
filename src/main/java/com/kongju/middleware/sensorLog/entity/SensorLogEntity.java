@@ -36,6 +36,9 @@ public class SensorLogEntity {
     @Column(name = "speed")
     private Integer speed;
 
+    @Column(name = "humidity")
+    private Double humidity;
+
     @Column(name = "timestamp", nullable = false)
     private LocalDateTime timestamp; // plc가 생성한 시간(timestamp_ms)
 
@@ -60,6 +63,7 @@ public class SensorLogEntity {
         log.pressure = dto.getPressure();
         log.vibration = dto.getVibration();
         log.speed = dto.getSpeed();
+        log.humidity = dto.getHumidity();
         return log;
     }
 }

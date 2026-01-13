@@ -27,6 +27,10 @@ public class SensorData {
     @JsonProperty("speed")
     private Integer speed;
 
+    @JsonProperty("humidity")
+    private Double humidity;
+
+
     @JsonProperty("timestamp")
     private LocalDateTime timestamp;
 

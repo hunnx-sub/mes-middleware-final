@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS sensor_log (
     pressure DOUBLE,
     vibration DOUBLE,
     speed INT,
+    humidity DOUBLE,
     timestamp TIMESTAMP NOT NULL,
     timestamp_ms BIGINT,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
